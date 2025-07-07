@@ -4,15 +4,15 @@ export ANDROID_SDK_ROOT=$HOME/Android/Sdk
 export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 
-export ZSH="/home/akey/.oh-my-zsh"
+export ZSH="/home/$USER/.oh-my-zsh"
 ZSH_THEME="aktheme"
 plugins=(git)
 source $ZSH/oh-my-zsh.sh
 
 # Arduino aliases
-alias arduino="sudo arduino-cli"
+alias arduino="arduino-cli"
 alias Arduino="clear ; sudo arduino-cli"
-alias serial-port="sudo screen"
+alias ino-port="arduino-cli"
 
 ino-lib() {
 	type=$1
@@ -109,7 +109,6 @@ ino-upgrade() {
 }
 
 # scripts
-alias ardillas="python ~/Documentos/Betas/python/ino.py"
 alias bspwm="startx"
 alias desktop="kioclient exec "
 
@@ -130,14 +129,11 @@ alias Apache-off="sudo systemctl stop httpd.service"
 alias Mongo-on="sudo systemctl start mongodb.service ; systemctl status mongodb.service"
 alias Mongo-off="sudo systemctl stop mongodb.service"
 alias Mongos="Mongo-off ; Mongo-on"
-alias chrome="google-chrome-stable"
-alias cambridge-one="./Descargas/Cambridge\ One\ Desktop\ App\ 2.27.0.AppImage"
 alias files="ranger"
 alias Files="sudo ranger"
 alias ll="exa -l"
-alias neofetch="neofetch --ascii ~/.config/neofetch/arch"
-alias nf="neofetch --ascii ~/.config/neofetch/arch | lolcat"
-alias clean="clear ; nf"
+alias ff="fastfetch | lolcat"
+alias clean="clear ; ff"
 alias math-run="matlab nodisplay -nosplash -nodesktop -r"
 alias math-exe="matlab -r"
 alias math-cli="clear ; matlab nodisplay -nosplash -nodesktop"
@@ -149,9 +145,8 @@ alias virtual="VirtualBoxVM --startvm"
 # editor
 alias edit="nvim"
 alias Edit="sudo nvim"
-alias new="nvim"
-alias Neovim="sudo nano"
 alias vim="nano"
+alias Vim="sudo nano"
 
 # tools
 alias ccat="clear ; cat"
@@ -170,13 +165,11 @@ alias Update-grub="sudo grub-mkconfig -o /boot/grub/grub.cfg"
 
 # extras
 alias logout="pkill -u"
-alias wallpaper="feh --bg-fill"
-
 
 if [ $(tty | grep /dev/tty) ];
 then
 	clear ; neofetch
 elif [ $(pgrep alacritty | wc -l) -le 1 ];
 then
-	neofetch # ; zsh ~/.config/qtile/autostart.sh
+	fastfetch
 fi
