@@ -168,7 +168,7 @@ alias logout="pkill -u"
 
 if [ $(tty | grep /dev/tty) ];
 then
-	clear ; neofetch
+	clear ; fastfetch
 elif [ $(pgrep alacritty | wc -l) -le 1 ];
 then
 	fastfetch
